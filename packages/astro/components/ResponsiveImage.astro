@@ -2,6 +2,10 @@
 import type { LocalImageProps, RemoteImageProps } from 'astro:assets';
 import Image from './Image.astro';
 
+type RemoteImageProtocols = `http://${string}` | `https://${string}`
+// If passed some URL with any supported protocol, it will be treated as a remote image.
+export type BasedProtocolRemoteImageProps = { src: RemoteImageProtocols } & RemoteImageProps;
+
 type Props = LocalImageProps | RemoteImageProps;
 
 const { class: className, ...props } = Astro.props;
